@@ -4,7 +4,6 @@ import Proptypes from 'prop-types';
 
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -20,6 +19,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import DashBoardIcon from '@material-ui/icons/Dashboard';
 import HomeIcon from '@material-ui/icons/Home';
 import SettingsIcon from '@material-ui/icons/Settings';
+
+import Link from './Link';
 
 const drawerWidth = 240;
 
@@ -65,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const MyDrawer = ({ open, handleDrawerClose }) => {
+const MyDrawer = ({ open, handleDrawerClose, above, below }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -94,50 +95,16 @@ const MyDrawer = ({ open, handleDrawerClose }) => {
       </div>
       <Divider />
       <List>
-        <Link component={RouterLink} to="/" underline="none">
-          <ListItem button>
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Typography className={classes.drawerText}>Home</Typography>
-              }
-            />
-          </ListItem>
-        </Link>
-
-        <Link component={RouterLink} to="/dashboard" underline="none">
-          <ListItem button>
-            <ListItemIcon>
-              <DashBoardIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Typography className={classes.drawerText}>
-                  Dashboard
-                </Typography>
-              }
-            />
-          </ListItem>
-        </Link>
+        <Link icon={<HomeIcon />} to="/" text="Home" />
+        <Link icon={<HomeIcon />} to="/dashboard" text="Dashboard " />
       </List>
       <Divider />
       <List>
-        <Link component={RouterLink} to="/preferences" underline="none">
-          <ListItem button>
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Typography className={classes.drawerText}>
-                  Preferences
-                </Typography>
-              }
-            />
-          </ListItem>
-        </Link>
+        <Link
+          icon={<SettingsIcon />}
+          component={RouterLink}
+          to="/preferences"
+        />
       </List>
     </Drawer>
   );
