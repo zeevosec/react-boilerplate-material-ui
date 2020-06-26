@@ -2,31 +2,20 @@ import React from 'react';
 import { Switch, Route, Link as RouterLink } from 'react-router-dom';
 
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
+import { makeStyles } from '@material-ui/core/styles';
+
 import AppBar from '@material-ui/core/AppBar';
 import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import DashBoardIcon from '@material-ui/icons/Dashboard';
-import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import SettingsIcon from '@material-ui/icons/Settings';
-import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
@@ -34,6 +23,8 @@ import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import PreferencesPage from 'containers/Preferences/Loadable';
+
+import Drawer from 'components/Drawer';
 
 const drawerWidth = 240;
 
@@ -121,7 +112,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function App() {
   const classes = useStyles();
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -223,7 +213,12 @@ export default function App() {
           >
             <MenuIcon />
           </IconButton>
-          <Link component={RouterLink} className={classes.brand} to="/">
+          <Link
+            component={RouterLink}
+            className={classes.brand}
+            to="/"
+            underline="none"
+          >
             <Typography className={classes.title} variant="h6" noWrap>
               React Starter Material
             </Typography>
@@ -263,80 +258,10 @@ export default function App() {
           </div>
         </Toolbar>
       </AppBar>
-
       {renderMenu}
       {renderMobileMenu}
 
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          <Link component={RouterLink} to="/" underline="None">
-            <ListItem button>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography className={classes.drawerText}>Home</Typography>
-                }
-              />
-            </ListItem>
-          </Link>
-
-          <Link component={RouterLink} to="/dashboard" underline="None">
-            <ListItem button>
-              <ListItemIcon>
-                <DashBoardIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography className={classes.drawerText}>
-                    Dashboard
-                  </Typography>
-                }
-              />
-            </ListItem>
-          </Link>
-        </List>
-        <Divider />
-        <List>
-          <Link component={RouterLink} to="/preferences">
-            <ListItem button>
-              <ListItemIcon>
-                <SettingsIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography className={classes.drawerText}>
-                    Preferences
-                  </Typography>
-                }
-              />
-            </ListItem>
-          </Link>
-        </List>
-      </Drawer>
+      <Drawer open={open} handleDrawerClose={handleDrawerClose} />
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
