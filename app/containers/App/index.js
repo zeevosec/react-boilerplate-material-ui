@@ -28,6 +28,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import PreferencesPage from 'containers/Preferences/Loadable';
 
 import Drawer from 'components/Drawer';
+import Footer from 'components/Footer';
 
 const drawerWidth = 240;
 
@@ -158,8 +159,8 @@ export default function App() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Log out</MenuItem>
     </Menu>
   );
 
@@ -300,6 +301,7 @@ export default function App() {
           <Route path="/preferences" component={PreferencesPage} />
           <Route path="" component={NotFoundPage} />
         </Switch>
+        <Footer />
       </main>
     </div>
   );
