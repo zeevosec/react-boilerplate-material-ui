@@ -18,6 +18,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import DashBoardIcon from '@material-ui/icons/Dashboard';
+import HomeIcon from '@material-ui/icons/Home';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
@@ -192,6 +195,28 @@ export default function App() {
       </MenuItem>
     </Menu>
   );
+
+  const top = [
+    {
+      icon: <HomeIcon />,
+      to: '/',
+      text: 'Home',
+    },
+    {
+      icon: <DashBoardIcon />,
+      to: '/dashboard',
+      text: 'Dashboard',
+    },
+  ];
+
+  const bottom = [
+    {
+      icon: <SettingsIcon />,
+      to: '/preferences',
+      text: 'Preferences',
+    },
+  ];
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -223,7 +248,6 @@ export default function App() {
               React Starter Material
             </Typography>
           </Link>
-          <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton
               aria-label="show 9 new notifications"
@@ -261,7 +285,12 @@ export default function App() {
       {renderMenu}
       {renderMobileMenu}
 
-      <Drawer open={open} handleDrawerClose={handleDrawerClose} />
+      <Drawer
+        open={open}
+        handleDrawerClose={handleDrawerClose}
+        top={top}
+        bottom={bottom}
+      />
 
       <main className={classes.content}>
         <div className={classes.toolbar} />

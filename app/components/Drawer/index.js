@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -16,9 +15,6 @@ import Drawer from '@material-ui/core/Drawer';
 
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import DashBoardIcon from '@material-ui/icons/Dashboard';
-import HomeIcon from '@material-ui/icons/Home';
-import SettingsIcon from '@material-ui/icons/Settings';
 
 import Link from './Link';
 
@@ -60,13 +56,9 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-  drawerText: {
-    color: '#757575',
-    fontWeight: 'bold',
-  },
 }));
 
-const MyDrawer = ({ open, handleDrawerClose, above, below }) => {
+const MyDrawer = ({ open, handleDrawerClose, top, bottom }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -95,24 +87,33 @@ const MyDrawer = ({ open, handleDrawerClose, above, below }) => {
       </div>
       <Divider />
       <List>
-        <Link icon={<HomeIcon />} to="/" text="Home" />
-        <Link icon={<HomeIcon />} to="/dashboard" text="Dashboard " />
+        {top.map(({ icon, to, text }) => (
+          <Link icon={icon} to={to} text={text} />
+        ))}
       </List>
       <Divider />
       <List>
-        <Link
-          icon={<SettingsIcon />}
-          component={RouterLink}
-          to="/preferences"
-        />
+        {bottom.map(({ icon, to, text }) => (
+          <Link icon={icon} to={to} text={text} />
+        ))}
       </List>
     </Drawer>
   );
 };
 
 MyDrawer.propTypes = {
-  open: Proptypes.bool.isRequired,
-  handleDrawerClose: Proptypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+  handleDrawerClose: PropTypes.func.isRequired,
+  top: PropTypes.shape({
+    icon: PropTypes.node.isRequired,
+    to: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  }),
+  bottom: PropTypes.shape({
+    icon: PropTypes.node.isRequired,
+    to: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  }),
 };
 
 export default MyDrawer;
