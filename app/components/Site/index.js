@@ -3,7 +3,6 @@ import { FormattedMessage } from 'react-intl';
 
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -62,7 +61,6 @@ export default function Site() {
 
   return (
     <React.Fragment>
-      <CssBaseline />
       <AppBar
         position="static"
         color="default"
@@ -108,7 +106,7 @@ export default function Site() {
             </Link>
           </nav>
           <Button
-            href="#"
+            href="/login"
             to="/login"
             color="primary"
             variant="outlined"

@@ -20,10 +20,12 @@ import 'sanitize.css/sanitize.css';
 
 // Material-UI Theme
 import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 // Import root app
 import Site from 'components/Site';
 import Login from 'components/Login';
+import SignUp from 'components/SignUp';
 import App from 'containers/App';
 
 // Import Language Provider
@@ -62,10 +64,13 @@ const render = messages => {
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
           <ThemeProvider theme={theme}>
+            <CssBaseline />
+
             <Switch>
               <Route exact path="/" component={Site} />
               <Route path="/app" component={App} />
               <Route path="/login" component={Login} />
+              <Route path="/signup" component={SignUp} />
               <Route path="" component={NotFound} />
             </Switch>
           </ThemeProvider>

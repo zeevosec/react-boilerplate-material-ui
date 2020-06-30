@@ -23,6 +23,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import PreferencesPage from 'containers/Preferences/Loadable';
+import HomePage from 'containers/HomePage/Loadable';
 
 import Drawer from 'components/Drawer';
 import Footer from 'components/Footer';
@@ -237,7 +238,7 @@ export default function App() {
           >
             <MenuIcon />
           </IconButton>
-          <Link className={classes.brand} to="/" underline="none">
+          <Link className={classes.brand} to="/app" underline="none">
             <Typography className={classes.title} variant="h6" noWrap>
               React Starter Material
             </Typography>
@@ -291,6 +292,7 @@ export default function App() {
         <Switch>
           <Route path="/app/dashboard" component={FeaturePage} />
           <Route path="/app/preferences" component={PreferencesPage} />
+          <Route path="/app" component={HomePage} />
         </Switch>
         <Footer />
       </main>
