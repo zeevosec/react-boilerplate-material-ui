@@ -13,30 +13,11 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
 import Link from 'components/Link';
+import Footer from 'components/Footer';
 
 import messages from './messages';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <MULink color="inherit" href="https://material-ui.com/">
-        Your Website
-      </MULink>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles(theme => ({
-  '@global': {
-    ul: {
-      margin: 0,
-      padding: 0,
-      listStyle: 'none',
-    },
-  },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
@@ -65,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2),
   },
   footer: {
-    borderTop: `1px solid ${theme.palette.divider}`,
+    // borderTop: `1px solid ${theme.palette.divider}`,
     marginTop: theme.spacing(8),
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
@@ -76,7 +57,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Pricing() {
+export default function Site() {
   const classes = useStyles();
 
   return (
@@ -185,7 +166,7 @@ export default function Pricing() {
       <Container maxWidth="md" component="footer" className={classes.footer}>
         <Grid container spacing={4} justify="space-evenly" />
         <Box mt={5}>
-          <Copyright />
+          <Footer />
         </Box>
       </Container>
       {/* End footer */}
