@@ -13,6 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import { Switch, Route } from 'react-router-dom';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
@@ -21,6 +22,8 @@ import 'sanitize.css/sanitize.css';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 // Import root app
+import Site from 'components/Site';
+import Login from 'components/Login';
 import App from 'containers/App';
 
 // Import Language Provider
@@ -51,13 +54,20 @@ const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
+const NotFound = () => <p>Not Found</p>;
+
 const render = messages => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
           <ThemeProvider theme={theme}>
-            <App />
+            <Switch>
+              <Route exact path="/" component={Site} />
+              <Route path="/app" component={App} />
+              <Route path="/login" component={Login} />
+              <Route path="" component={NotFound} />
+            </Switch>
           </ThemeProvider>
         </ConnectedRouter>
       </LanguageProvider>

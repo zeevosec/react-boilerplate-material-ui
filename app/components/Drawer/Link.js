@@ -33,6 +33,11 @@ const MyLink = ({ icon, selected, text, to }) => {
   );
 };
 
-MyLink.propTypes = {};
+MyLink.propTypes = {
+  icon: PropTypes.node.isRequired,
+  selected: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+};
 
 export default MyLink;

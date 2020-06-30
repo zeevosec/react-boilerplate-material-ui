@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 
 import AppBar from '@material-ui/core/AppBar';
-import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -29,6 +28,7 @@ import PreferencesPage from 'containers/Preferences/Loadable';
 
 import Drawer from 'components/Drawer';
 import Footer from 'components/Footer';
+import Link from 'components/Link';
 
 const drawerWidth = 240;
 
@@ -200,12 +200,12 @@ export default function App() {
   const top = [
     {
       icon: <HomeIcon />,
-      to: '/',
+      to: '/app',
       text: 'Home',
     },
     {
       icon: <DashBoardIcon />,
-      to: '/dashboard',
+      to: '/app/dashboard',
       text: 'Dashboard',
     },
   ];
@@ -213,7 +213,7 @@ export default function App() {
   const bottom = [
     {
       icon: <SettingsIcon />,
-      to: '/preferences',
+      to: '/app/preferences',
       text: 'Preferences',
     },
   ];
@@ -239,12 +239,7 @@ export default function App() {
           >
             <MenuIcon />
           </IconButton>
-          <Link
-            component={RouterLink}
-            className={classes.brand}
-            to="/"
-            underline="none"
-          >
+          <Link className={classes.brand} to="/" underline="none">
             <Typography className={classes.title} variant="h6" noWrap>
               React Starter Material
             </Typography>
@@ -296,10 +291,8 @@ export default function App() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/dashboard" component={FeaturePage} />
-          <Route path="/preferences" component={PreferencesPage} />
-          <Route path="" component={NotFoundPage} />
+          <Route path="/app/dashboard" component={FeaturePage} />
+          <Route path="/app/preferences" component={PreferencesPage} />
         </Switch>
         <Footer />
       </main>
