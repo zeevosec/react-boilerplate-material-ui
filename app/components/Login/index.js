@@ -45,9 +45,13 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     margin: theme.spacing(8, 4),
+    padding: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      height: '100%',
+    },
   },
   avatar: {
     margin: theme.spacing(1),
@@ -62,6 +66,9 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     color: theme.palette.primary.main,
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
 }));
 
@@ -71,14 +78,14 @@ export default function SignInSide() {
   return (
     <Grid
       container
-      spacing={12}
+      spacing={2}
       alignItems="center"
       justify="center"
       style={{ minHeight: '100vh' }}
       component="main"
       className={classes.root}
     >
-      <Grid item xs={12} sm={12} md={12}>
+      <Grid item xs={12} sm={8} md={4} lg={4}>
         <Typography
           className={classes.title}
           align="center"
@@ -87,79 +94,69 @@ export default function SignInSide() {
         >
           <FormattedMessage {...messages.header} />
         </Typography>
-      </Grid>
-
-      <Grid
-        item
-        xs={12}
-        sm={8}
-        md={4}
-        lg={4}
-        component={Paper}
-        elevation={6}
-        square
-      >
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h2" variant="h5">
-            Sign in
-          </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="/#" variant="body2">
-                  Forgot password?
-                </Link>
+        <Paper elevation={6} square>
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h2" variant="h5">
+              Sign in
+            </Typography>
+            <form className={classes.form} noValidate>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="/#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link href="/signup" variant="body2">
+                    {/* TODO: Translate */}
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Link href="/signup" variant="body2">
-                  {/* TODO: Translate */}
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
-          </form>
-        </div>
+              <Box mt={5}>
+                <Copyright />
+              </Box>
+            </form>
+          </div>
+        </Paper>
       </Grid>
     </Grid>
   );

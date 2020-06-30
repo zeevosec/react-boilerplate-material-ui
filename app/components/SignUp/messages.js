@@ -11,6 +11,6 @@ export const scope = 'app.components.SignUp';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'This is the SignUp component!',
+    defaultMessage: 'React Material UI Starter',
   },
 });

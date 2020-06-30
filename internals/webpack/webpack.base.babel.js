@@ -5,6 +5,8 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const dotenv = require('dotenv').config();
+
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
@@ -113,6 +115,7 @@ module.exports = options => ({
     // drop any unreachable code.
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
+      ...dotenv.parsed,
     }),
   ]),
   resolve: {
