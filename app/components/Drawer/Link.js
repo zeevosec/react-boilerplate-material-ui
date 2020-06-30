@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const MyLink = ({ icon, selected, text, to }) => {
+const MyLink = ({ icon, text, to }) => {
   const classes = useStyles();
   return (
     <Link component={RouterLink} to={to} underline="none">
@@ -35,7 +35,6 @@ const MyLink = ({ icon, selected, text, to }) => {
 
 MyLink.propTypes = {
   icon: PropTypes.node.isRequired,
-  selected: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Link as RouterLink } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,9 +21,7 @@ import DashBoardIcon from '@material-ui/icons/Dashboard';
 import HomeIcon from '@material-ui/icons/Home';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import PreferencesPage from 'containers/Preferences/Loadable';
 
 import Drawer from 'components/Drawer';

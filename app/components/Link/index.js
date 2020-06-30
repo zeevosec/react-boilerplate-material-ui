@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 
 function MyLink(props) {
   const { children, ...rest } = props;
-  console.log(children);
   return (
     <Link component={RouterLink} {...rest}>
       {children}

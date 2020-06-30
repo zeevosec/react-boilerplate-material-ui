@@ -1,6 +1,6 @@
 /**
  *
- * Tests for Routing
+ * Tests for PrivateRoute
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -10,12 +10,12 @@ import React from 'react';
 import { render } from 'react-testing-library';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
-import Routing from '../index';
+import PrivateRoute from '../index';
 
-describe('<Routing />', () => {
+describe('<PrivateRoute />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
-    render(<Routing />);
+    render(<PrivateRoute />);
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -31,7 +31,7 @@ describe('<Routing />', () => {
   it.skip('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(<Routing />);
+    } = render(<PrivateRoute />);
     expect(firstChild).toMatchSnapshot();
   });
 });
